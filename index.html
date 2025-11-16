@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Last-Minute Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>📘 Last-Minute Hub</h1>
+      <form id="search-form" class="search-form" action="search.html" method="get">
+        <input id="search" name="q" type="search" placeholder="Search by subject name, code, year or branch..." aria-label="Search">
+        <button type="submit" class="search-btn">🔍</button>
+      </form>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>Choose Branch</h2>
+      <div id="navigation" class="option-container"></div>
+    </section>
+
+    <section class="section">
+      <h2>Available Materials (recent)</h2>
+      <div id="materials" class="materials-grid"></div>
+    </section>
+
+    <section class="section three-cols">
+      <div class="card">
+        <h3>Feedback</h3>
+        <form id="feedback-form">
+          <input name="name" placeholder="Your name" />
+          <input name="email" placeholder="Email (optional)" />
+          <textarea name="feedback" placeholder="Your feedback..." rows="4"></textarea>
+          <button type="submit" class="btn">Send Feedback</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>FAQ</h3>
+        <details>
+          <summary>How to upload materials?</summary>
+          <p>Upload is admin-only. Share files with your project admin to add them to the repo for now.</p>
+        </details>
+        <details>
+          <summary>How to search?</summary>
+          <p>Search by subject name, subject code, year (e.g., "2nd Year") or branch (e.g., "ISE").</p>
+        </details>
+      </div>
+
+      <div class="card">
+        <h3>Contact</h3>
+        <p>For queries, email: <a href="mailto:lastminutehub@example.com">lastminutehub@example.com</a></p>
+        <p>Or use the feedback form.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with ❤️ by Team Last-Minute Hub</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

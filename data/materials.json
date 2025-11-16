@@ -1,0 +1,179 @@
+{
+  "CSE": {
+    "2": {
+      "MAT31": { "name": "Statistics and Probability", "materials": {} },
+      "DCS31": { "name": "Digital Circuits and Computer Organization", "materials": {} },
+      "OS31": {
+        "name": "Operating Systems",
+        "materials": {
+          "subjectCode": "CSE31OS",
+          "subjectName": "Operating Systems",
+          "branch": "CSE",
+          "year": "2nd Year",
+          "description": "Introduction to OS concepts, processes, memory, and file systems.",
+          "files": {
+            "notes": [
+              { "title": "Lecture 1 Notes", "file": "materials/cse/os/lecture1.pdf" },
+              { "title": "Lecture 2 Notes", "file": "materials/cse/os/lecture2.pdf" }
+            ],
+            "questionPapers": [
+              { "title": "Midsem Question Paper", "file": "materials/cse/os/midsem.pdf" }
+            ],
+            "videos": [
+              { "title": "OS Basics Playlist", "url": "https://www.youtube.com/watch?v=exampleOS" }
+            ]
+          }
+        }
+      },
+      "DSA31": {
+        "name": "Data Structures and Applications",
+        "materials": {
+          "subjectCode": "CSE31DSA",
+          "subjectName": "DSA",
+          "branch": "CSE",
+          "year": "2nd Year",
+          "description": "Stacks, queues, trees, graphs, and algorithms.",
+          "files": {
+            "notes": [
+              { "title": "Unit 1 Notes", "file": "materials/cse/dsa/unit1.pdf" },
+              { "title": "Unit 2 Notes", "file": "materials/cse/dsa/unit2.pdf" }
+            ],
+            "questionPapers": [
+              { "title": "Midsem Paper", "file": "materials/cse/dsa/midsem.pdf" }
+            ],
+            "videos": [
+              { "title": "DSA Full Playlist", "url": "https://www.youtube.com/watch?v=exampleDSA" }
+            ]
+          }
+        }
+      },
+      "DAA41": { "name": "Design and Analysis of Algorithms", "materials": {} },
+      "MC41": { "name": "Microcontroller and Embedded Systems", "materials": {} },
+      "TOC41": { "name": "Theory of Computation", "materials": {} },
+      "BIO41": { "name": "Biology for Engineers", "materials": {} },
+      "ESC41": { "name": "Engineering Science Course", "materials": {} },
+      "UHV41": { "name": "Universal Human Values", "materials": {} }
+    }
+  },
+
+  "ISE": {
+    "2": {
+      "ISE201": {
+        "name": "Data Structures",
+        "materials": {
+          "subjectCode": "S3IS01",
+          "subjectName": "Data Structures",
+          "branch": "ISE",
+          "year": "2nd Year",
+          "description": "Core subject covering stacks, queues, trees, graphs, and algorithms.",
+          "files": {
+            "notes": [
+              { "title": "Unit-1 Notes", "file": "materials/ise/year2/ds/unit1.pdf" },
+              { "title": "Unit-2 Notes", "file": "materials/ise/year2/ds/unit2.pdf" }
+            ],
+            "questionPapers": [
+              { "title": "Midsem Question Paper", "file": "materials/ise/year2/ds/midsem.pdf" }
+            ],
+            "videos": [
+              { "title": "Data Structures Full Playlist", "url": "https://www.youtube.com/watch?v=Db9ZYbJONHc" }
+            ]
+          }
+        }
+      },
+      "ISE202": { "name": "Discrete Mathematics", "materials": {} },
+      "ISE203": { "name": "Operating Systems", "materials": {} },
+      "ISE204": { "name": "Digital Logic Design", "materials": {} },
+      "ISE205": { "name": "Object Oriented Programming", "materials": {} },
+      "ISE206": { "name": "Computer Organization", "materials": {} },
+      "ISE207": { "name": "Engineering Science Course", "materials": {} },
+      "ISE208": { "name": "Biology for Engineers", "materials": {} },
+      "ISE209": { "name": "Universal Human Values", "materials": {} },
+      "ISE210": { "name": "Soft Skills & Communication", "materials": {} }
+    }
+  },
+
+  "ECE": {
+    "2": {
+      "ECE301": {
+        "name": "Analog Electronic Circuits",
+        "materials": {
+          "subjectCode": "ECE301",
+          "subjectName": "Analog Electronic Circuits",
+          "branch": "ECE",
+          "year": "2nd Year",
+          "description": "Basic concepts of analog electronics.",
+          "files": {
+            "notes": [
+              { "title": "Unit 1 Notes", "file": "materials/ece/analog/unit1.pdf" }
+            ],
+            "questionPapers": [
+              { "title": "Previous Year Paper", "file": "materials/ece/analog/prev.pdf" }
+            ],
+            "videos": [
+              { "title": "Analog Circuits Playlist", "url": "https://www.youtube.com/watch?v=exampleAEC" }
+            ]
+          }
+        }
+      },
+      "ECE302": { "name": "Digital System Design", "materials": {} },
+      "ECE303": { "name": "Network Analysis", "materials": {} },
+      "ECE304": { "name": "Signals and Systems", "materials": {} },
+      "ECE305": { "name": "Electromagnetic Waves", "materials": {} },
+      "ECE306": { "name": "Microcontroller Programming", "materials": {} },
+      "ECE307": { "name": "Communication Engineering", "materials": {} },
+      "ECE308": { "name": "Electronic Measurements", "materials": {} },
+      "ECE309": { "name": "Biology for Engineers", "materials": {} },
+      "ECE310": { "name": "Universal Human Values", "materials": {} }
+    }
+  },
+
+  "AI": {
+    "2": {
+      "AI201": { "name": "Linear Algebra", "materials": {} },
+      "AI202": { "name": "Probability & Statistics", "materials": {} },
+      "AI203": {
+        "name": "Data Structures",
+        "materials": {
+          "subjectCode": "AI203DS",
+          "subjectName": "Data Structures",
+          "branch": "AI",
+          "year": "2nd Year",
+          "description": "Core Data Structures for AI applications.",
+          "files": {
+            "notes": [
+              { "title": "Unit 1 Notes", "file": "materials/ai/ds/unit1.pdf" }
+            ],
+            "questionPapers": [
+              { "title": "Midsem Paper", "file": "materials/ai/ds/midsem.pdf" }
+            ],
+            "videos": [
+              { "title": "DS for AI Playlist", "url": "https://www.youtube.com/watch?v=exampleAI" }
+            ]
+          }
+        }
+      },
+      "AI204": { "name": "Python for AI", "materials": {} },
+      "AI205": { "name": "Digital Logic", "materials": {} },
+      "AI206": { "name": "Computer Organization", "materials": {} },
+      "AI207": { "name": "Biology for Engineers", "materials": {} },
+      "AI208": { "name": "Universal Human Values", "materials": {} },
+      "AI209": { "name": "Engineering Science Course", "materials": {} },
+      "AI210": { "name": "Database Management Systems", "materials": {} }
+    }
+  },
+
+  "ME": {
+    "2": {
+      "ME01": { "name": "Engineering Thermodynamics", "materials": {} },
+      "ME02": { "name": "Mechanics of Materials", "materials": {} },
+      "ME03": { "name": "Manufacturing Processes – I", "materials": {} },
+      "ME04": { "name": "Fluid Mechanics", "materials": {} },
+      "ME05": { "name": "Material Science & Metallurgy", "materials": {} },
+      "ME06": { "name": "Kinematics of Machines", "materials": {} },
+      "ME07": { "name": "Applied Thermodynamics", "materials": {} },
+      "ME08": { "name": "Manufacturing Processes – II", "materials": {} },
+      "ME09": { "name": "Fluid Machinery", "materials": {} },
+      "ME10": { "name": "Mechanical Measurements & Metrology", "materials": {} }
+    }
+  }
+}
