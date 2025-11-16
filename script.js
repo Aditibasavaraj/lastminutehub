@@ -386,6 +386,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Logout button handler: clear session keys and redirect to login
+(function attachLogoutHandler(){
+  const btn = document.getElementById('logout-btn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    // Clear known session keys (do not wipe unrelated localStorage)
+    const keys = ['userType','userName','userUSN','userEmail','loginTime','lastUSN','rememberMe','savedUSN'];
+    keys.forEach(k => localStorage.removeItem(k));
+    // Optional: show a small confirmation then redirect
+    try {
+      btn.disabled = true;
+      btn.textContent = 'Logging out...';
+    } catch (e) {}
+    setTimeout(() => {
+      window.location.href = 'login.html';
+    }, 250);
+  });
+})();
+
 /* ------------- Minimal CSS for modal and cards (inject if not present) ------------- */
 (function injectModalCSS() {
   if (document.getElementById("lmh-modal-style")) return;

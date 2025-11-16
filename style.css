@@ -61,6 +61,19 @@ body {
   font-size:14px;
 }
 
+/* Logout button in header */
+.logout-btn {
+  background: transparent;
+  color: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding:8px 12px;
+  border-radius:10px;
+  cursor: pointer;
+  font-size:14px;
+}
+
+.logout-btn:hover { background: rgba(255,255,255,0.06); }
+
 /* Option container (branch cards, year cards) */
 .option-container {
   display:flex;
