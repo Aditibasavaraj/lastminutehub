@@ -62,69 +62,68 @@ function openSubjectModal(subjectCode, subjectData) {
   const body = modal.querySelector("#lmh-modal-body");
   body.innerHTML = "";
 
-  // Title
-  const title = document.createElement("h2");
-  title.textContent = subjectData.name + " (" + subjectCode + ")";
-  body.appendChild(title);
+  // Subject title
+  const h2 = document.createElement("h2");
+  h2.textContent = subjectData.name + " (" + subjectCode + ")";
+  body.appendChild(h2);
 
-  const info = document.createElement("p");
-  info.style.color = "#666";
-  info.textContent =
-    (subjectData.branch || "") + " • " + (subjectData.year || "");
-  body.appendChild(info);
+  // Branch & year
+  const p = document.createElement("p");
+  p.style.color = "#666";
+  p.textContent =
+    (subjectData.materials?.branch || "") +
+    " • " +
+    (subjectData.materials?.year || "");
+  body.appendChild(p);
 
-  const files = subjectData?.materials?.files;
+  const files = subjectData.materials?.files;
 
-  // If no PDF yet
   if (!files) {
-    const msg = document.createElement("p");
-    msg.textContent = "No materials uploaded yet.";
-    body.appendChild(msg);
+    body.innerHTML += "<p>No materials uploaded yet.</p>";
   } else {
-    // NOTES
+
+    // NOTES PDF
     if (files.notes) {
       files.notes.forEach(note => {
-        const link = document.createElement("a");
-        link.href = note.file;
-        link.target = "_blank";
-        link.textContent = "📄 " + note.title;
-        link.style.display = "block";
-        link.style.margin = "8px 0";
-        body.appendChild(link);
+        const a = document.createElement("a");
+        a.href = note.file;
+        a.target = "_blank";
+        a.textContent = "📄 " + note.title;
+        a.style.display = "block";
+        a.style.margin = "10px 0";
+        body.appendChild(a);
       });
     }
 
     // QUESTION PAPERS
     if (files.questionPapers) {
-      files.questionPapers.forEach(qp => {
-        const link = document.createElement("a");
-        link.href = qp.file;
-        link.target = "_blank";
-        link.textContent = "📝 " + qp.title;
-        link.style.display = "block";
-        link.style.margin = "8px 0";
-        body.appendChild(link);
+      files.questionPapers.forEach(q => {
+        const a = document.createElement("a");
+        a.href = q.file;
+        a.target = "_blank";
+        a.textContent = "📝 " + q.title;
+        a.style.display = "block";
+        body.appendChild(a);
       });
     }
 
     // VIDEOS
     if (files.videos) {
       files.videos.forEach(v => {
-        const link = document.createElement("a");
-        link.href = v.url;
-        link.target = "_blank";
-        link.textContent = "🎥 " + v.title;
-        link.style.display = "block";
-        link.style.margin = "8px 0";
-        body.appendChild(link);
+        const a = document.createElement("a");
+        a.href = v.url;
+        a.target = "_blank";
+        a.textContent = "🎥 " + v.title;
+        a.style.display = "block";
+        body.appendChild(a);
       });
     }
   }
 
-  // Show popup
   modal.style.display = "flex";
   document.body.style.overflow = "hidden";
 }
+
 
 
 /* ------------- Rendering helpers ------------- */
