@@ -88,11 +88,11 @@
       "ISE207": { "name": "Engineering Science Course", "materials": {} },
       "ISE208": { "name": "Biology for Engineers", "materials": {} },
       "ISE209": { "name": "Universal Human Values", "materials": {} },
-      "ISE210": {
-  "name": "Soft Skills & Communication",
+        "ISE210": {
+      "name": "Advanced Web Technology and Internet Applications",
   "materials": {
     "subjectCode": "S3ISI02",
-    "subjectName": "Soft Skills & Communication",
+    "subjectName": "Advanced Web Technology and Internet Applications",
     "branch": "ISE",
     "year": "2nd Year",
     "description": "Develop communication, presentation, and interpersonal skills.",
@@ -100,7 +100,7 @@
       "notes": [
         {
           "title": "Advanced Web Technology and Internet Applications (S3ISI02)",
-          "file": "materials/ise/year2/sem3/S3ISI02_Advanced_Web_Technology.pdf",
+          "file": "materials/ise/AWT/S3ISI02 (1).pdf",
           "type": "Notes",
           "uploadedDate": "2025-12-10"
         }
@@ -121,7 +121,7 @@
           "description": "Statistical methods, probability distributions, and inference.",
           "files": {
             "notes": [
-              { "title": "Statistics", "file": "materials/ise/year2/sem3/Statistics .pdf" }
+              { "title": "Statistics", "file": "materials/ise/maths/Statistics  (1).pdf" }
             ],
             "questionPapers": [],
             "videos": []

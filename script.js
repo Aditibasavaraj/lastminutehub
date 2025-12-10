@@ -62,59 +62,70 @@ function openSubjectModal(subjectCode, subjectData) {
   const body = modal.querySelector("#lmh-modal-body");
   body.innerHTML = "";
 
-  const header = createEl("div", { class: "modal-header" },
-    createEl("h2", {}, `${subjectData.name} (${subjectCode})`),
-    createEl("p", { class: "muted" }, `${subjectData.branch || ""} • ${subjectData.year || ""}`)
-  );
-  body.appendChild(header);
+  // Title
+  const title = document.createElement("h2");
+  title.textContent = subjectData.name + " (" + subjectCode + ")";
+  body.appendChild(title);
 
-  // Prepare materials array in flexible way:
-  // Accepts either:
-  // - subjectData.materials as array [{type,title,file},...]
-  // - subjectData.materials as object {notes:'', questionPapers:'', youtube:''}
-  let mats = [];
-  const raw = subjectData.materials;
-  if (Array.isArray(raw)) {
-    mats = raw;
-  } else if (raw && typeof raw === "object") {
-    // convert object keys to array entries if non-empty
-    for (const k of Object.keys(raw)) {
-      const v = raw[k];
-      if (!v) continue;
-      // if v is array, add each
-      if (Array.isArray(v)) {
-        v.forEach(x => mats.push({ type: k, title: x.split("/").pop ? x.split("/").pop() : x, file: x }));
-      } else {
-        mats.push({ type: k, title: (typeof v === "string" ? (v.split ? v.split("/").pop() : v) : k), file: v });
-      }
+  const info = document.createElement("p");
+  info.style.color = "#666";
+  info.textContent =
+    (subjectData.branch || "") + " • " + (subjectData.year || "");
+  body.appendChild(info);
+
+  const files = subjectData?.materials?.files;
+
+  // If no PDF yet
+  if (!files) {
+    const msg = document.createElement("p");
+    msg.textContent = "No materials uploaded yet.";
+    body.appendChild(msg);
+  } else {
+    // NOTES
+    if (files.notes) {
+      files.notes.forEach(note => {
+        const link = document.createElement("a");
+        link.href = note.file;
+        link.target = "_blank";
+        link.textContent = "📄 " + note.title;
+        link.style.display = "block";
+        link.style.margin = "8px 0";
+        body.appendChild(link);
+      });
+    }
+
+    // QUESTION PAPERS
+    if (files.questionPapers) {
+      files.questionPapers.forEach(qp => {
+        const link = document.createElement("a");
+        link.href = qp.file;
+        link.target = "_blank";
+        link.textContent = "📝 " + qp.title;
+        link.style.display = "block";
+        link.style.margin = "8px 0";
+        body.appendChild(link);
+      });
+    }
+
+    // VIDEOS
+    if (files.videos) {
+      files.videos.forEach(v => {
+        const link = document.createElement("a");
+        link.href = v.url;
+        link.target = "_blank";
+        link.textContent = "🎥 " + v.title;
+        link.style.display = "block";
+        link.style.margin = "8px 0";
+        body.appendChild(link);
+      });
     }
   }
 
-  // If no materials, show placeholder message
-  if (!mats || mats.length === 0) {
-    body.appendChild(createEl("p", { class: "muted" }, "No materials added yet for this subject (demo placeholder)."));
-  } else {
-    const grid = createEl("div", { class: "resource-grid" });
-    mats.forEach(m => {
-      const card = createEl("div", { class: "resource-card" });
-      const title = m.title || m.type || "Resource";
-      card.appendChild(createEl("h4", {}, `${m.type ? (m.type + " - ") : ""}${title}`));
-      if (m.file && m.file.startsWith("http")) {
-        card.appendChild(createEl("p", {}, createEl("a", { href: m.file, target: "_blank" }, "Open")));
-      } else if (m.file) {
-        // local file path
-        card.appendChild(createEl("p", {}, createEl("a", { href: m.file, download: true }, "Download")));
-      } else {
-        card.appendChild(createEl("p", { class: "muted" }, "Placeholder (no file)"));
-      }
-      grid.appendChild(card);
-    });
-    body.appendChild(grid);
-  }
-
+  // Show popup
   modal.style.display = "flex";
   document.body.style.overflow = "hidden";
 }
+
 
 /* ------------- Rendering helpers ------------- */
 function renderBranchCards(branches, container) {
