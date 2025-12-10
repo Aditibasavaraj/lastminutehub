@@ -1,100 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Login - Last-Minute Hub</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="login-style.css" />
-  </head>
-  <body class="login-page">
-    <div class="login-container">
-      <div class="login-card">
-        <div class="login-header">
-          <h1>📘 Last-Minute Hub</h1>
-          <p>Student Study Materials Hub</p>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - SIT Last-Minute Hub</title>
+  <link rel="stylesheet" href="login-style.css" />
+</head>
+<body class="login-page">
+  <div class="login-wrapper">
+    <!-- Left Section: Dark Blue Theme with University Info & Notice Board -->
+    <section class="login-left">
+      <div class="left-content">
+        <!-- University Logo & Branding -->
+        <div class="university-branding">
+          <div class="logo-placeholder">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M 50 20 L 65 45 L 50 70 L 35 45 Z" fill="currentColor"/>
+              <text x="50" y="85" font-size="8" text-anchor="middle" fill="currentColor">SIT</text>
+            </svg>
+          </div>
+          <h2 class="university-name">Siddaganga Institute of Technology</h2>
+          <p class="university-location">Tumakuru – 572103</p>
         </div>
 
-        <!-- Tab Navigation -->
-        <div class="tab-navigation">
-          <button class="tab-btn active" data-tab="login">Sign In</button>
-          <button class="tab-btn" data-tab="signup">Create Account</button>
+        <!-- Welcome Heading -->
+        <h1 class="welcome-heading">Welcome to SIT</h1>
+
+        <!-- Notice Board Card -->
+        <div class="notice-board">
+          <h3 class="notice-title">📋 Notice Board</h3>
+          <ul class="notice-list">
+            <li>
+              <span class="notice-date">Dec 10, 2025</span>
+              <span class="notice-text">Semester End Exams scheduled for January 2026</span>
+            </li>
+            <li>
+              <span class="notice-date">Dec 08, 2025</span>
+              <span class="notice-text">Library hours extended during exam season</span>
+            </li>
+            <li>
+              <span class="notice-date">Dec 05, 2025</span>
+              <span class="notice-text">New study materials uploaded for all branches</span>
+            </li>
+            <li>
+              <span class="notice-date">Dec 01, 2025</span>
+              <span class="notice-text">Student feedback forms now available online</span>
+            </li>
+            <li>
+              <span class="notice-date">Nov 28, 2025</span>
+              <span class="notice-text">Campus placement drive begins next month</span>
+            </li>
+          </ul>
         </div>
-
-        <!-- Login Form -->
-        <form id="login-form" class="login-form active-tab">
-          <div class="form-group">
-            <label for="usn">Student USN</label>
-            <input
-              type="text"
-              id="usn"
-              name="usn"
-              placeholder="e.g., 1SI24IS099"
-              required
-              aria-label="Student USN"
-            />
-            <small class="form-hint">Format: YearBranchCode followed by your roll number</small>
-          </div>
-
-          <button type="submit" class="login-btn">Sign In</button>
-
-          <div class="form-divider">OR</div>
-
-          <button type="button" class="btn-secondary" id="guest-btn">
-            Continue as Guest
-          </button>
-        </form>
-
-        <!-- Sign Up Form -->
-        <form id="signup-form" class="signup-form">
-          <div class="form-group">
-            <label for="signup-name">Full Name</label>
-            <input
-              type="text"
-              id="signup-name"
-              name="fullname"
-              placeholder="Enter your full name"
-              required
-              aria-label="Full Name"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="signup-usn">Student USN</label>
-            <input
-              type="text"
-              id="signup-usn"
-              name="usn"
-              placeholder="e.g., 1SI24IS099"
-              required
-              aria-label="Student USN"
-            />
-            <small class="form-hint">Format: YearBranchCode followed by your roll number</small>
-          </div>
-
-          <div class="form-checkbox">
-            <input type="checkbox" id="terms" name="terms" required />
-            <label for="terms">I agree to the Terms & Conditions</label>
-          </div>
-
-          <button type="submit" class="login-btn">Create Account</button>
-        </form>
-
-        <div class="login-footer"></div>
       </div>
+    </section>
 
-      <div class="login-features">
-        <h2>Why Login?</h2>
-        <ul>
-          <li>📌 Save your favorite materials</li>
-          <li>📝 Track your study progress</li>
-          <li>⭐ Rate and review materials</li>
-          <li>📤 Upload your own study notes</li>
-          <li>🔔 Get notified about new materials</li>
-        </ul>
+    <!-- Right Section: Deep Red Theme with Login Form -->
+    <section class="login-right">
+      <div class="right-content">
+        <!-- Login Card -->
+        <div class="login-card">
+          <h2 class="login-heading">Login to Your Account</h2>
+
+          <!-- Login Form -->
+          <form id="login-form" class="login-form">
+            <!-- USN Input -->
+            <div class="form-group">
+              <label for="usn">USN</label>
+              <input
+                type="text"
+                id="usn"
+                name="usn"
+                placeholder="Enter your USN"
+                required
+                aria-label="Student USN"
+              />
+            </div>
+
+            <!-- DOB Dropdowns: Day, Month, Year -->
+            <div class="form-group dob-group">
+              <label>Date of Birth</label>
+              <div class="dob-container">
+                <select id="dob-day" name="dob-day" aria-label="Day" required>
+                  <option value="">Day</option>
+                </select>
+
+                <select id="dob-month" name="dob-month" aria-label="Month" required>
+                  <option value="">Month</option>
+                </select>
+
+                <select id="dob-year" name="dob-year" aria-label="Year" required>
+                  <option value="">Year</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Forgot Password Link -->
+            <div class="forgot-password">
+              <a href="#" title="Contact admin to reset password">Forgot Password?</a>
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="login-btn">LOGIN</button>
+
+            <!-- Guest Option -->
+            <div class="guest-option">
+              <button type="button" id="guest-btn" class="guest-btn">
+                Continue as Guest
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
+  </div>
 
-    <script src="login-script.js"></script>
-  </body>
+  <script src="login-script.js"></script>
+</body>
 </html>

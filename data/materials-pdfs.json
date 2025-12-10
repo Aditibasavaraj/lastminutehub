@@ -1,0 +1,93 @@
+{
+  "materials": [
+    {
+      "id": 4,
+      "title": "Data Structures and Algorithms",
+      "branch": "ISE",
+      "year": 2,
+      "subject": "Data Structures",
+      "code": "S3IS01",
+      "file": "materials/cse/year2/sem3/DataStructures_Arrays.pdf",
+      "type": "Notes",
+      "uploadedDate": "2025-12-10",
+      "views": 89
+    },
+    {
+      "id": 5,
+      "title": "Advanced Web Technology",
+      "branch": "CSE",
+      "year": 2,
+      "semester": 4,
+      "subject": "DBMS",
+      "code": "CSE24DBMS",
+      "file": "c:\Users\PC\Downloads\aditiiiiii\projecttttt\S3ISI02 (1).pdf",
+      "type": "Notes",
+      "uploadedDate": "2025-12-10",
+      "views": 56
+    },
+    {
+      "id": 6,
+      "title": "Electronics - Basic Circuits",
+      "branch": "ISE",
+      "year": 1,
+      "semester": 1,
+      "subject": "Electronics",
+      "code": "ISE11ELEC",
+      "file": "materials/ise/year1/sem1/Electronics_Circuits.pdf",
+      "type": "Notes",
+      "uploadedDate": "2025-12-10",
+      "views": 38
+    },
+    {
+      "id": 7,
+      "title": "Engineering Graphics",
+      "branch": "ISE",
+      "year": 1,
+      "semester": 2,
+      "subject": "Engineering Graphics",
+      "code": "ISE12EG",
+      "file": "materials/ise/year1/sem2/EngineeringGraphics.pdf",
+      "type": "Notes",
+      "uploadedDate": "2025-12-10",
+      "views": 28
+    },
+    {
+      "id": 8,
+      "title": "Control Systems",
+      "branch": "ISE",
+      "year": 2,
+      "semester": 3,
+      "subject": "Control Systems",
+      "code": "ISE23CS",
+      "file": "materials/ise/year2/sem3/ControlSystems.pdf",
+      "type": "Notes",
+      "uploadedDate": "2025-12-10",
+      "views": 73
+    },
+    {
+      "id": 9,
+      "title": "Statistics",
+      "branch": "ISE",
+      "year": 2,
+      "subject": "Mathematics",
+      "code": "ISE23STATS",
+      "file": "materials/ise/year2/sem3/Statistics .pdf",
+      "type": "Notes",
+      "uploadedDate": "2025-12-10",
+      "views": 12
+    },
+    {
+      "id": 10,
+      "title": "Power Systems",
+      "branch": "ISE",
+      "year": 2,
+      "semester": 4,
+      "subject": "Power Systems",
+      "code": "ISE24PS",
+      "file": "materials/ise/year2/sem4/PowerSystems.pdf",
+      "type": "Notes",
+      "uploadedDate": "2025-12-10",
+      "views": 51
+    }
+  ]
+}

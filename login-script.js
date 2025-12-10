@@ -2,38 +2,40 @@
 
 // Mock user database with USN (in production, this would be backend validation)
 const registeredUsers = [
-  { name: 'Demo Student', usn: '1SI24IS099', email: 'demo@lastminutehub.com' },
-  { name: 'Test User', usn: '1SI23CS045', email: 'test@lastminutehub.com' }
+  { name: 'Demo Student', usn: '1SI24IS099', email: 'demo@lastminutehub.com', dob: '2002-05-15' },
+  { name: 'Test User', usn: '1SI23CS045', email: 'test@lastminutehub.com', dob: '2001-09-10' }
 ];
 
-// Tab Switching
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const tabName = this.getAttribute('data-tab');
-    switchTab(tabName);
-  });
-});
+// Populate DOB selects and prepare login form (no signup tab)
+function populateDOBSelects() {
+  const daySel = document.getElementById('dob-day');
+  const monthSel = document.getElementById('dob-month');
+  const yearSel = document.getElementById('dob-year');
 
-function switchTab(tabName) {
-  // Update tab buttons
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.remove('active');
-  });
-  document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-
-  // Update forms
-  document.querySelectorAll('.login-form, .signup-form').forEach(form => {
-    form.classList.remove('active-tab');
-  });
-
-  if (tabName === 'login') {
-    document.getElementById('login-form').classList.add('active-tab');
-  } else {
-    document.getElementById('signup-form').classList.add('active-tab');
+  // Populate days
+  for (let d = 1; d <= 31; d++) {
+    const opt = document.createElement('option');
+    opt.value = String(d).padStart(2, '0');
+    opt.textContent = d;
+    daySel.appendChild(opt);
   }
 
-  // Clear any previous error messages
-  document.querySelectorAll('.message').forEach(msg => msg.remove());
+  // Populate months
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  months.forEach((m, i) => {
+    const opt = document.createElement('option');
+    opt.value = String(i+1).padStart(2, '0');
+    opt.textContent = m;
+    monthSel.appendChild(opt);
+  });
+
+  // Populate years (1980 - 2010)
+  for (let y = 2010; y >= 1980; y--) {
+    const opt = document.createElement('option');
+    opt.value = String(y);
+    opt.textContent = y;
+    yearSel.appendChild(opt);
+  }
 }
 
 // Handle login form submission
@@ -41,6 +43,23 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const usn = document.getElementById('usn').value.trim().toUpperCase();
+  const day = document.getElementById('dob-day').value;
+  const month = document.getElementById('dob-month').value;
+  const year = document.getElementById('dob-year').value;
+
+  // Basic DOB validation
+  if (!day || !month || !year) {
+    showMessage('Please enter your date of birth (day, month, year).', 'error', 'login-form');
+    return;
+  }
+
+  // Construct ISO date and validate
+  const dobIso = `${year}-${month}-${day}`;
+  const dobObj = new Date(dobIso);
+  if (isNaN(dobObj.getTime())) {
+    showMessage('Invalid date of birth. Please check your input.', 'error', 'login-form');
+    return;
+  }
   
   // Basic validation
   if (!usn) {
@@ -54,44 +73,11 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     return;
   }
   
-  // Simulate login process
-  simulateLogin(usn);
-});
+  // Save last used USN for convenience
+  localStorage.setItem('lastUSN', usn);
 
-// Handle sign up form submission
-document.getElementById('signup-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const fullname = document.getElementById('signup-name').value.trim();
-  const usn = document.getElementById('signup-usn').value.trim().toUpperCase();
-  const terms = document.getElementById('terms').checked;
-  
-  // Basic validation
-  if (!fullname || !usn) {
-    showMessage('Please fill in all fields', 'error', 'signup-form');
-    return;
-  }
-  
-  // USN format validation
-  if (!isValidUSN(usn)) {
-    showMessage('Invalid USN format. Example: 1SI24IS099', 'error', 'signup-form');
-    return;
-  }
-  
-  // Terms validation
-  if (!terms) {
-    showMessage('Please agree to the Terms & Conditions', 'error', 'signup-form');
-    return;
-  }
-  
-  // Check if USN already exists
-  if (registeredUsers.some(u => u.usn === usn)) {
-    showMessage('This USN is already registered. Please sign in instead.', 'error', 'signup-form');
-    return;
-  }
-  
-  // Create new account
-  simulateSignup(fullname, usn);
+  // Simulate login process (passing DOB)
+  simulateLogin(usn, dobIso);
 });
 
 // Handle guest login
@@ -122,16 +108,22 @@ function isValidEmail(email) {
 }
 
 // Simulate login (in production, this would call your backend API)
-function simulateLogin(usn) {
+function simulateLogin(usn, dobIso) {
   // Check against registered users
   const user = registeredUsers.find(u => u.usn === usn);
   
   if (user) {
+    // If user has a stored DOB, validate it as an authentication factor
+    if (user.dob && user.dob !== dobIso) {
+      showMessage('Date of birth does not match our records.', 'error', 'login-form');
+      return;
+    }
     // Store user session
     localStorage.setItem('userType', 'authenticated');
     localStorage.setItem('userName', user.name);
     localStorage.setItem('userUSN', user.usn);
     localStorage.setItem('userEmail', user.email);
+    localStorage.setItem('userDOB', dobIso);
     localStorage.setItem('loginTime', new Date().toISOString());
     
     showMessage('Login successful! Redirecting...', 'success', 'login-form');
@@ -141,25 +133,6 @@ function simulateLogin(usn) {
   } else {
     showMessage('USN not found. Please sign up first or check your USN.', 'error', 'login-form');
   }
-}
-
-// Simulate sign up
-function simulateSignup(fullname, usn) {
-  // Add new user to database
-  const newUser = { name: fullname, usn: usn, email: '' };
-  registeredUsers.push(newUser);
-  
-  // Store user session
-  localStorage.setItem('userType', 'authenticated');
-  localStorage.setItem('userName', fullname);
-  localStorage.setItem('userUSN', usn);
-  localStorage.setItem('userEmail', '');
-  localStorage.setItem('loginTime', new Date().toISOString());
-  
-  showMessage('Account created successfully! Redirecting...', 'success', 'signup-form');
-  setTimeout(() => {
-    window.location.href = 'index.html';
-  }, 1500);
 }
 
 // Show message feedback
@@ -220,6 +193,8 @@ document.head.appendChild(style);
 
 // Pre-fill USN if previously used
 window.addEventListener('DOMContentLoaded', function() {
+  // Populate DOB selects
+  try { populateDOBSelects(); } catch (e) { /* ignore if elements missing */ }
   const lastUSN = localStorage.getItem('lastUSN');
   if (lastUSN) {
     document.getElementById('usn').value = lastUSN;
@@ -228,5 +203,6 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 // Demo credentials notice
-console.log('Demo USNs:\n1SI24IS099\n1SI23CS045');
+console.log('Demo credentials:');
+registeredUsers.forEach(u => console.log(`${u.usn}  DOB: ${u.dob || 'N/A'}`));
 

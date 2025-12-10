@@ -1,306 +1,597 @@
-/* Login Page Styles */
+/* ============================================================================
+   Login Page - Two Column Layout with Dark Blue (Left) & Deep Red (Right)
+   ============================================================================ */
 
-/* Login Page Layout */
-.login-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #0d6efd 100%);
-  padding: 20px;
-  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.login-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 1000px;
+/* Body & Page Setup */
+.login-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* Main Wrapper - Flexbox for Two Columns */
+.login-wrapper {
+  display: flex;
   width: 100%;
+  min-height: 100vh;
+}
+
+/* ============================================================================
+   LEFT SECTION - Dark Blue Theme (#1e3a5f)
+   ============================================================================ */
+
+.login-left {
+  flex: 1;
+ background: linear-gradient(135deg, #2563eb);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 40px 30px;
+  min-height: 100vh;
+}
+
+.left-content {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+/* University Branding */
+.university-branding {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-placeholder {
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px #2563eb;
+}
+
+.logo-placeholder svg {
+  width: 70px;
+  height: 70px;
+  color: white;
+}
+
+.university-name {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.university-location {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+}
+
+/* Welcome Heading */
+.welcome-heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  letter-spacing: -0.5px;
+}
+
+/* Notice Board Card */
+.notice-board {
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 25px #2563eb;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notice-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1e3a5f;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.notice-list {
+  list-style: none;
+}
+
+.notice-list li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notice-list li:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.notice-date {
+  font-size: 12px;
+  color: #999;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 5px;
+}
+
+.notice-text {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Scrollbar styling for notice board */
+.notice-board::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notice-board::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.notice-board::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 10px;
+}
+
+.notice-board::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* ============================================================================
+   RIGHT SECTION - Deep Red Theme (#b71c1c)
+   ============================================================================ */
+
+.login-right {
+  flex: 1;
+  background: #f8fafc;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 30px;
+  min-height: 100vh;
+}
+
+.right-content {
+  max-width: 400px;
+  width: 100%;
 }
 
 /* Login Card */
 .login-card {
   background: white;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 40px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
-.login-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.login-header h1 {
-  font-size: 28px;
-  color: #0d6efd;
-  margin-bottom: 8px;
-}
-
-.login-header p {
-  color: #666;
-  font-size: 14px;
-}
-
-/* Tab Navigation */
-.tab-navigation {
-  display: flex;
-  gap: 0;
-  margin-bottom: 30px;
-  background: #f0f0f0;
-  border-radius: 8px;
-  padding: 4px;
-}
-
-.tab-btn {
-  flex: 1;
-  padding: 12px 16px;
-  border: none;
-  background: transparent;
-  color: #666;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.tab-btn:hover {
+.login-heading {
+  font-size: 24px;
+  font-weight: 700;
   color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: -0.5px;
 }
 
-.tab-btn.active {
-  background: white;
-  color: #0d6efd;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Form Styles */
-.login-form,
-.signup-form {
-  display: none;
+/* Login Form */
+.login-form {
+  display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.login-form.active-tab,
-.signup-form.active-tab {
-  display: flex;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .form-group label {
   font-size: 14px;
   font-weight: 600;
-  color: #222;
+  color: #333;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
 }
 
-.form-group input {
+/* USN Input */
+#usn {
   padding: 12px 14px;
-  border: 2px solid #e0e0e0;
+  border: 1.5px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
   font-family: inherit;
   transition: all 0.3s ease;
+  background: #fafafa;
 }
 
-.form-group input:focus {
+#usn:focus {
   outline: none;
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+  border-color: #2563eb;
+box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.1);
 }
 
-.form-group input::placeholder {
+#usn::placeholder {
   color: #999;
 }
 
-/* Checkbox */
-.form-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* DOB Container */
+.dob-group {
+  margin-bottom: 10px;
+}
+
+.dob-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.dob-container select {
+  padding: 12px 10px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
   font-size: 14px;
-}
-
-.form-checkbox input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  font-family: inherit;
+  background: #fafafa;
+  color: #333;
+  transition: all 0.3s ease;
   cursor: pointer;
-  accent-color: #0d6efd;
 }
 
-.form-checkbox label {
-  cursor: pointer;
-  color: #666;
-  margin: 0;
+.dob-container select:focus {
+  outline: none;
+  border-color: #2563eb;
+box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.1);
 }
 
-/* Buttons */
+.dob-container select option {
+  background: white;
+  color: #333;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  text-align: right;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+.forgot-password a {
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.forgot-password a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* Login Button */
 .login-btn {
-  padding: 12px 24px;
-  background: linear-gradient(90deg, #0d6efd, #0069d9);
+  padding: 14px;
+ background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
+  letter-spacing: 1px;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(183, 28, 28, 0.3);
+  margin-top: 10px;
 }
 
 .login-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(13, 110, 253, 0.4);
+  box-shadow: 0 6px 20px rgba(183, 28, 28, 0.4);
 }
 
 .login-btn:active {
   transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(183, 28, 28, 0.3);
 }
 
-.form-divider {
+/* Guest Option */
+.guest-option {
   text-align: center;
-  color: #999;
-  font-size: 12px;
-  font-weight: 600;
-  position: relative;
-  margin: 10px 0;
+  margin-top: 15px;
 }
 
-.form-divider::before,
-.form-divider::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 48%;
-  height: 1px;
-  background: #e0e0e0;
-}
-
-.form-divider::before {
-  left: 0;
-}
-
-.form-divider::after {
-  right: 0;
-}
-
-.btn-secondary {
-  padding: 12px 24px;
+.guest-btn {
   background: transparent;
-  color: #0d6efd;
-  border: 2px solid #0d6efd;
+ color: #2563eb;
+border: 1.5px solid #2563eb;
+
+  padding: 11px 20px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.btn-secondary:hover {
-  background: #0d6efd;
-  color: white;
+.guest-btn:hover {
+  background: rgba(183, 28, 28, 0.1);
+  border-color: #8b0000;
+  color: #8b0000;
 }
 
-/* Login Footer */
-.login-footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 13px;
-  color: #666;
-}
+/* ============================================================================
+   RESPONSIVE DESIGN - Mobile & Tablet
+   ============================================================================ */
 
-.login-footer p {
-  margin: 8px 0;
-}
+/* Tablet (up to 1024px) */
+@media (max-width: 1024px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
 
-.login-footer a {
-  color: #0d6efd;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.login-footer a:hover {
-  color: #0069d9;
-  text-decoration: underline;
-}
-
-/* Features Section */
-.login-features {
-  color: white;
-  order: -1;
-}
-
-.login-features h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.login-features ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.login-features li {
-  font-size: 16px;
-  line-height: 1.6;
-  opacity: 0.95;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .login-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .login-left,
+  .login-right {
+    min-height: auto;
+    padding: 50px 30px;
   }
 
   .login-card {
-    padding: 30px;
+    padding: 35px;
   }
 
-  .login-features {
-    order: 0;
-  }
-
-  .login-features h2 {
-    font-size: 20px;
-  }
-
-  .login-features li {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-page {
-    padding: 10px;
-  }
-
-  .login-card {
-    padding: 20px;
-  }
-
-  .login-header h1 {
+  .login-heading {
     font-size: 22px;
   }
 
-  .form-group input {
-    padding: 10px 12px;
+  .welcome-heading {
+    font-size: 28px;
+  }
+
+  .university-name {
+    font-size: 20px;
+  }
+
+  .notice-board {
+    max-height: 350px;
+  }
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+  .login-left,
+  .login-right {
+    padding: 40px 20px;
+  }
+
+  .left-content,
+  .right-content {
+    max-width: 100%;
+  }
+
+  .login-card {
+    padding: 30px 20px;
+  }
+
+  .logo-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo-placeholder svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .university-name {
+    font-size: 18px;
+  }
+
+  .university-location {
+    font-size: 14px;
+  }
+
+  .welcome-heading {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .login-heading {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .notice-title {
     font-size: 16px;
   }
 
-  .login-btn,
-  .btn-secondary {
-    padding: 10px 20px;
+  .notice-board {
+    padding: 20px;
+    max-height: 300px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  #usn,
+  .dob-container select {
+    font-size: 13px;
+    padding: 11px 12px;
+  }
+
+  .login-btn {
+    padding: 12px;
     font-size: 14px;
+  }
+
+  .guest-btn {
+    font-size: 13px;
+    padding: 10px 18px;
+  }
+
+  .dob-container {
+    gap: 8px;
+  }
+}
+
+/* Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .login-left,
+  .login-right {
+    padding: 30px 15px;
+  }
+
+  .left-content {
+    text-align: center;
+  }
+
+  .logo-placeholder {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+  }
+
+  .logo-placeholder svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .university-branding {
+    margin-bottom: 30px;
+  }
+
+  .university-name {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .university-location {
+    font-size: 12px;
+  }
+
+  .welcome-heading {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+
+  .login-heading {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .notice-title {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+
+  .notice-board {
+    padding: 18px;
+    max-height: 280px;
+  }
+
+  .notice-list li {
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+  }
+
+  .notice-date {
+    font-size: 11px;
+  }
+
+  .notice-text {
+    font-size: 13px;
+  }
+
+  .login-card {
+    padding: 25px 18px;
+  }
+
+  .form-group {
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  #usn,
+  .dob-container select {
+    font-size: 12px;
+    padding: 10px 10px;
+  }
+
+  .login-btn {
+    padding: 11px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+  }
+
+  .guest-btn {
+    font-size: 12px;
+    padding: 9px 16px;
+  }
+
+  .dob-container {
+    gap: 6px;
+  }
+
+  .forgot-password a {
+    font-size: 12px;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY & FOCUS STATES
+   ============================================================================ */
+
+/* Focus visible for keyboard navigation */
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid #2563eb;
+
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
   }
 }
