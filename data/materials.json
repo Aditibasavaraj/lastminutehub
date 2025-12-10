@@ -35,7 +35,7 @@
           "description": "Stacks, queues, trees, graphs, and algorithms.",
           "files": {
             "notes": [
-              { "title": "Unit 1 Notes", "file": "materials/cse/dsa/unit1.pdf" },
+              { "title": "Unit 1 Notes", "file": "materials/ise/dsa/DSA_Unit-1_CompleteNotes.pdf" },
               { "title": "Unit 2 Notes", "file": "materials/cse/dsa/unit2.pdf" }
             ],
             "questionPapers": [
