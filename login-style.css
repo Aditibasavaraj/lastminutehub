@@ -5,12 +5,12 @@
 :root {
   --login-bg: #f5f5f5;
   --login-left-bg: linear-gradient(135deg, #2563eb);
-  --login-right-bg: linear-gradient(135deg, #dc2626);
+  --login-right-bg: linear-gradient(135deg, #2563eb);
   --login-card-bg: white;
   --login-text: #333;
   --login-input-bg: #f9f9f9;
   --login-input-border: #ddd;
-  --login-btn-bg: #dc2626;
+  --login-btn-bg: #2563eb;
   --login-btn-text: white;
 }
 
