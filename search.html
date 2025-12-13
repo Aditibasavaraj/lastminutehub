@@ -1,34 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Search results - Last-Minute Hub</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <h1>Search Results</h1>
-      <form id="search-form-top" class="search-form" action="search.html" method="get">
-        <input id="search-top" name="q" type="search" placeholder="Search by subject name, code, year or branch..." aria-label="Search">
-        <button type="submit" class="search-btn">🔍</button>
-      </form>
-      <a class="back-link" href="index.html">← Home</a>
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Search results - Last-Minute Hub</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      // Apply dark mode immediately to prevent flash
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+          document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('dark-mode');
+          });
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <h1>Search Results</h1>
+        <form
+          id="search-form-top"
+          class="search-form"
+          action="search.html"
+          method="get"
+        >
+          <input
+            id="search-top"
+            name="q"
+            type="search"
+            placeholder="Search by subject name, code, year or branch..."
+            aria-label="Search"
+          />
+          <button type="submit" class="search-btn">🔍</button>
+        </form>
+        <a class="back-link" href="index.html">← Home</a>
+        <button
+          id="dark-mode-toggle"
+          class="dark-mode-btn"
+          title="Toggle Dark Mode"
+        >
+          🌙
+        </button>
+      </div>
+    </header>
 
-  <main class="container">
-    <section class="section">
-      <h2>Results for: <span id="query-text"></span></h2>
-      <div id="search-results" class="materials-grid"></div>
-    </section>
-  </main>
+    <main class="container">
+      <section class="section">
+        <h2>Results for: <span id="query-text"></span></h2>
+        <div id="search-results" class="materials-grid"></div>
+      </section>
+    </main>
 
-  <footer class="site-footer">
-    <p>Made with ❤️ by Team Last-Minute Hub</p>
-  </footer>
+    <footer class="site-footer">
+      <p>Made with ❤️ by Team Last-Minute Hub</p>
+    </footer>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

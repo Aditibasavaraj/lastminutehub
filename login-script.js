@@ -21,10 +21,10 @@ function populateDOBSelects() {
   }
 
   // Populate months
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   months.forEach((m, i) => {
     const opt = document.createElement('option');
-    opt.value = String(i+1).padStart(2, '0');
+    opt.value = String(i + 1).padStart(2, '0');
     opt.textContent = m;
     monthSel.appendChild(opt);
   });
@@ -39,9 +39,9 @@ function populateDOBSelects() {
 }
 
 // Handle login form submission
-document.getElementById('login-form').addEventListener('submit', function(e) {
+document.getElementById('login-form').addEventListener('submit', function (e) {
   e.preventDefault();
-  
+
   const usn = document.getElementById('usn').value.trim().toUpperCase();
   const day = document.getElementById('dob-day').value;
   const month = document.getElementById('dob-month').value;
@@ -60,19 +60,19 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     showMessage('Invalid date of birth. Please check your input.', 'error', 'login-form');
     return;
   }
-  
+
   // Basic validation
   if (!usn) {
     showMessage('Please enter your USN', 'error', 'login-form');
     return;
   }
-  
+
   // USN format validation (example: 1SI24IS099)
   if (!isValidUSN(usn)) {
     showMessage('Invalid USN format. Example: 1SI24IS099', 'error', 'login-form');
     return;
   }
-  
+
   // Save last used USN for convenience
   localStorage.setItem('lastUSN', usn);
 
@@ -81,12 +81,12 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
 });
 
 // Handle guest login
-document.getElementById('guest-btn').addEventListener('click', function() {
+document.getElementById('guest-btn').addEventListener('click', function () {
   if (confirm('Continue as guest? You will have limited access to features.')) {
     // Set guest session
     localStorage.setItem('userType', 'guest');
     localStorage.setItem('loginTime', new Date().toISOString());
-    
+
     showMessage('Logging in as guest...', 'success', 'login-form');
     setTimeout(() => {
       window.location.href = 'index.html';
@@ -111,7 +111,7 @@ function isValidEmail(email) {
 function simulateLogin(usn, dobIso) {
   // Check against registered users
   const user = registeredUsers.find(u => u.usn === usn);
-  
+
   if (user) {
     // If user has a stored DOB, validate it as an authentication factor
     if (user.dob && user.dob !== dobIso) {
@@ -125,7 +125,7 @@ function simulateLogin(usn, dobIso) {
     localStorage.setItem('userEmail', user.email);
     localStorage.setItem('userDOB', dobIso);
     localStorage.setItem('loginTime', new Date().toISOString());
-    
+
     showMessage('Login successful! Redirecting...', 'success', 'login-form');
     setTimeout(() => {
       window.location.href = 'index.html';
@@ -138,11 +138,11 @@ function simulateLogin(usn, dobIso) {
 // Show message feedback
 function showMessage(message, type, formId) {
   const form = document.getElementById(formId);
-  
+
   // Remove existing message if any
   const existing = form.querySelector('.message');
   if (existing) existing.remove();
-  
+
   // Create message element
   const msgEl = document.createElement('div');
   msgEl.className = `message message-${type}`;
@@ -156,7 +156,7 @@ function showMessage(message, type, formId) {
     font-weight: 500;
     animation: slideIn 0.3s ease;
   `;
-  
+
   if (type === 'error') {
     msgEl.style.background = '#f8d7da';
     msgEl.style.color = '#721c24';
@@ -166,9 +166,9 @@ function showMessage(message, type, formId) {
     msgEl.style.color = '#155724';
     msgEl.style.border = '1px solid #c3e6cb';
   }
-  
+
   form.insertBefore(msgEl, form.firstChild);
-  
+
   // Auto remove error messages after 4 seconds
   if (type === 'error') {
     setTimeout(() => msgEl.remove(), 4000);
@@ -192,7 +192,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Pre-fill USN if previously used
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
   // Populate DOB selects
   try { populateDOBSelects(); } catch (e) { /* ignore if elements missing */ }
   const lastUSN = localStorage.getItem('lastUSN');
@@ -205,4 +205,35 @@ window.addEventListener('DOMContentLoaded', function() {
 // Demo credentials notice
 console.log('Demo credentials:');
 registeredUsers.forEach(u => console.log(`${u.usn}  DOB: ${u.dob || 'N/A'}`));
+
+// Dark Mode functionality - Initialize immediately to prevent flash
+(function () {
+  // Apply theme immediately to prevent flash
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+  }
+})();
+
+// Dark Mode toggle functionality
+(function () {
+  const toggleBtn = document.getElementById('dark-mode-toggle');
+  if (!toggleBtn) return;
+
+  // Check for saved theme preference or default to light mode
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggleBtn.textContent = '☀️';
+  } else {
+    toggleBtn.textContent = '🌙';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  });
+})();
 

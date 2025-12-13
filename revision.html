@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Last-Minute Revision Mode - Last-Minute Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply dark mode immediately to prevent flash
+    (function() {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('dark-mode');
+        });
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>📘 Last-Minute Hub</h1>
+      <a href="index.html" class="back-link">← Back to Home</a>
+      <button id="dark-mode-toggle" class="dark-mode-btn" title="Toggle Dark Mode">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>Last-Minute Revision Mode</h2>
+      <p>Select a topic below to generate revision content. (Currently supports: Advanced Web Technology)</p>
+      <form id="revision-form">
+        <select id="topic-select" required>
+          <option value="">Choose a topic...</option>
+          <option value="advanced-web-technology">Advanced Web Technology</option>
+        </select>
+        <button type="submit" class="btn">Generate Revision</button>
+      </form>
+      <div id="revision-content" style="display: none;"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with ❤️ by Team Last-Minute Hub</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="notification-system.js"></script>
+  <script src="notification-ui.js"></script>
+  <script src="timetable-parser.js"></script>
+</body>
+</html>

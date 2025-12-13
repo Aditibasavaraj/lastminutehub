@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Academic Calendar - Last-Minute Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply dark mode immediately to prevent flash
+    (function() {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('dark-mode');
+        });
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>📅 Academic Calendar</h1>
+      <a href="index.html" class="back-link">← Back to Home</a>
+      <button id="dark-mode-toggle" class="dark-mode-btn" title="Toggle Dark Mode">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Page Header -->
+    <section class="section">
+      <div class="calendar-header">
+        <h2>📅 Academic Calendar 2024-25</h2>
+        <p class="calendar-subtitle">Stay updated with important academic dates, exams, and events throughout the semester.</p>
+      </div>
+
+      <!-- Color Legend -->
+      <div class="calendar-legend">
+        <h3>📋 Event Types</h3>
+        <div class="legend-items">
+          <div class="legend-item">
+            <span class="legend-color holiday"></span>
+            <span class="legend-text">🔴 Holidays</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color exam"></span>
+            <span class="legend-text">🟢 Minor Exams</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color marks"></span>
+            <span class="legend-text">🔵 Marks / Attendance</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color feedback"></span>
+            <span class="legend-text">🟡 Feedback / Events</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar Container -->
+    <div id="calendar-container">
+      <!-- Calendars will be dynamically generated here -->
+    </div>
+
+    <!-- Loading State -->
+    <div id="calendar-loading" class="loading-state">
+      <div class="loading-spinner">📅</div>
+      <p>Loading academic calendar...</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with ❤️ by Team Last-Minute Hub</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="calendar.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Notification System Demo - LastMinuteHub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .demo-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px var(--card-shadow);
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .demo-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--input-bg);
+            border-radius: 8px;
+            border-left: 4px solid var(--btn-bg);
+        }
+        
+        .demo-button {
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .demo-output {
+            background: #1e1e1e;
+            color: #e0e0e0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>📚 Smart Notification System Demo</h1>
+            <p>Test the notification system features and see how it works!</p>
+        </div>
+
+        <div class="demo-section">
+            <h3>🔔 Test Notifications</h3>
+            <p>Try different types of notifications:</p>
+            <button class="demo-button" onclick="testBrowserNotification()">Test Browser Notification</button>
+            <button class="demo-button" onclick="testInSiteNotification()">Test In-Site Notification</button>
+            <button class="demo-button" onclick="testSuccessMessage()">Test Success Message</button>
+        </div>
+
+        <div class="demo-section">
+            <h3>📅 Add Sample Exams</h3>
+            <p>Add sample exam reminders to test the system:</p>
+            <button class="demo-button" onclick="addSampleExam()">Add Sample Exam</button>
+            <button class="demo-button" onclick="addMultipleExams()">Add Multiple Exams</button>
+            <button class="demo-button" onclick="clearAllNotifications()">Clear All</button>
+        </div>
+
+        <div class="demo-section">
+            <h3>📊 System Status</h3>
+            <p>Check the current state of the notification system:</p>
+            <button class="demo-button" onclick="showSystemStats()">Show Statistics</button>
+            <button class="demo-button" onclick="showUpcomingEvents()">Show Upcoming Events</button>
+            <button class="demo-button" onclick="testPermissions()">Check Permissions</button>
+            <div id="demo-output" class="demo-output" style="display: none;"></div>
+        </div>
+
+        <div class="demo-section">
+            <h3>📁 Timetable Import Test</h3>
+            <p>Test the timetable import functionality:</p>
+            <button class="demo-button" onclick="downloadSampleCSV()">Download Sample CSV</button>
+            <button class="demo-button" onclick="downloadSampleJSON()">Download Sample JSON</button>
+            <input type="file" id="timetable-file" accept=".csv,.json,.txt" style="margin: 10px 0;">
+            <button class="demo-button" onclick="importTimetable()">Import Timetable</button>
+        </div>
+
+        <div class="demo-section">
+            <h3>ℹ️ Instructions</h3>
+            <ol>
+                <li><strong>Allow Notifications:</strong> Click "Test Browser Notification" and allow permissions when prompted</li>
+                <li><strong>Add Exams:</strong> Use "Add Sample Exam" to create test reminders</li>
+                <li><strong>Check Status:</strong> Use "Show Statistics" to see system information</li>
+                <li><strong>Import Timetable:</strong> Download a sample file and import it back</li>
+                <li><strong>Open Notification Center:</strong> Click the 🔔 button in the bottom-right corner</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Include notification system scripts -->
+    <script src="notification-system.js"></script>
+    <script src="notification-ui.js"></script>
+    <script src="timetable-parser.js"></script>
+
+    <script>
+        // Demo functions
+        function testBrowserNotification() {
+            if (window.notificationSystem) {
+                window.notificationSystem.sendNotification(
+                    { name: 'Demo Exam', subject: 'Computer Science' },
+                    { days: 1 }
+                );
+                log('Browser notification sent (if permissions granted)');
+            } else {
+                log('Notification system not loaded yet');
+            }
+        }
+
+        function testInSiteNotification() {
+            if (window.notificationSystem) {
+                window.notificationSystem.showInSiteNotification(
+                    { name: 'Demo Test', subject: 'Mathematics' },
+                    'This is a test in-site notification! 📚'
+                );
+                log('In-site notification displayed');
+            }
+        }
+
+        function testSuccessMessage() {
+            if (window.notificationSystem) {
+                window.notificationSystem.showSuccessMessage('🎉 Demo success message displayed!');
+                log('Success message shown');
+            }
+        }
+
+        function addSampleExam() {
+            if (window.notificationSystem) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                tomorrow.setHours(10, 0, 0, 0);
+
+                const examId = window.notificationSystem.addExamReminder({
+                    name: 'Sample Midterm Exam',
+                    subject: 'Computer Science',
+                    date: tomorrow,
+                    time: '10:00'
+                });
+                log(`Sample exam added with ID: ${examId}`);
+            }
+        }
+
+        function addMultipleExams() {
+            if (window.notificationSystem) {
+                const subjects = ['Mathematics', 'Physics', 'Chemistry', 'Web Technology'];
+                let added = 0;
+
+                subjects.forEach((subject, index) => {
+                    const examDate = new Date();
+                    examDate.setDate(examDate.getDate() + (index + 2));
+                    examDate.setHours(9 + index, 0, 0, 0);
+
+                    window.notificationSystem.addExamReminder({
+                        name: `${subject} Final Exam`,
+                        subject: subject,
+                        date: examDate,
+                        time: `${9 + index}:00`
+                    });
+                    added++;
+                });
+
+                log(`Added ${added} sample exams`);
+            }
+        }
+
+        function clearAllNotifications() {
+            if (window.notificationSystem) {
+                localStorage.removeItem('lmh_notifications');
+                window.notificationSystem.notifications = [];
+                log('All notifications cleared');
+            }
+        }
+
+        function showSystemStats() {
+            if (window.notificationSystem) {
+                const stats = window.notificationSystem.getStats();
+                log('System Statistics:', stats);
+            }
+        }
+
+        function showUpcomingEvents() {
+            if (window.notificationSystem) {
+                const events = window.notificationSystem.getUpcomingEvents();
+                log('Upcoming Events:', events);
+            }
+        }
+
+        function testPermissions() {
+            const permission = Notification.permission;
+            const supported = 'Notification' in window;
+            log('Notification Support:', { supported, permission });
+        }
+
+        function downloadSampleCSV() {
+            if (window.timetableParser) {
+                window.timetableParser.downloadSampleTimetable('csv');
+                log('Sample CSV timetable downloaded');
+            }
+        }
+
+        function downloadSampleJSON() {
+            if (window.timetableParser) {
+                window.timetableParser.downloadSampleTimetable('json');
+                log('Sample JSON timetable downloaded');
+            }
+        }
+
+        async function importTimetable() {
+            const fileInput = document.getElementById('timetable-file');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                log('Please select a file first');
+                return;
+            }
+
+            if (window.timetableParser) {
+                try {
+                    const result = await window.timetableParser.importTimetable(file);
+                    log('Import Result:', result);
+                } catch (error) {
+                    log('Import Error:', error.message);
+                }
+            }
+        }
+
+        function log(message, data = null) {
+            const output = document.getElementById('demo-output');
+            output.style.display = 'block';
+            
+            const timestamp = new Date().toLocaleTimeString();
+            let logEntry = `[${timestamp}] ${message}`;
+            
+            if (data) {
+                logEntry += '\n' + JSON.stringify(data, null, 2);
+            }
+            
+            output.textContent += logEntry + '\n\n';
+            output.scrollTop = output.scrollHeight;
+        }
+
+        // Initialize demo
+        document.addEventListener('DOMContentLoaded', () => {
+            log('Smart Notification System Demo loaded');
+            log('Click buttons above to test different features');
+            
+            // Wait for notification system to load
+            setTimeout(() => {
+                if (window.notificationSystem) {
+                    log('✅ Notification system ready');
+                } else {
+                    log('❌ Notification system not loaded');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

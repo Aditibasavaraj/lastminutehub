@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Skill Development Hub - Last-Minute Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply dark mode immediately to prevent flash
+    (function() {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('dark-mode');
+        });
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>💻 Skill Development Hub</h1>
+      <a href="index.html" class="back-link">← Back to Home</a>
+      <button id="dark-mode-toggle" class="dark-mode-btn" title="Toggle Dark Mode">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Page Header -->
+    <section class="section">
+      <div class="skills-header">
+        <h2>💻 Skill Development Hub – Learn from the Best Platforms</h2>
+        <p class="skills-subtitle">Enhance your skills with curated resources from top learning platforms. Click "Learn Now" to access external courses and tutorials.</p>
+      </div>
+    </section>
+
+    <!-- Skills Categories -->
+    <div id="skills-container">
+      <!-- Skills will be dynamically loaded here -->
+    </div>
+
+    <!-- Loading State -->
+    <div id="skills-loading" class="loading-state">
+      <div class="loading-spinner">📚</div>
+      <p>Loading skill categories...</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with ❤️ by Team Last-Minute Hub</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="skills.js"></script>
+</body>
+</html>

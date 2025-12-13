@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Subject - Last-Minute Hub</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <h1 id="subject-title">Subject</h1>
-      <a id="subject-back" class="back-link" href="index.html">← Home</a>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="section">
-      <h2>Resources</h2>
-
-      <div id="resources" class="resources-grid">
-        <!-- dynamic resource cards -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Subject - Last-Minute Hub</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      // Apply dark mode immediately to prevent flash
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+          document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('dark-mode');
+          });
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 id="subject-title">Subject</h1>
+        <a id="subject-back" class="back-link" href="index.html">← Home</a>
+        <button
+          id="dark-mode-toggle"
+          class="dark-mode-btn"
+          title="Toggle Dark Mode"
+        >
+          🌙
+        </button>
       </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="site-footer">
-    <p>Made with ❤️ by Team Last-Minute Hub</p>
-  </footer>
+    <main class="container">
+      <section class="section">
+        <h2>Resources</h2>
 
-  <script src="script.js"></script>
-</body>
+        <div id="resources" class="resources-grid">
+          <!-- dynamic resource cards -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Made with ❤️ by Team Last-Minute Hub</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -2,6 +2,31 @@
    Login Page - Two Column Layout with Dark Blue (Left) & Deep Red (Right)
    ============================================================================ */
 
+:root {
+  --login-bg: #f5f5f5;
+  --login-left-bg: linear-gradient(135deg, #2563eb);
+  --login-right-bg: linear-gradient(135deg, #dc2626);
+  --login-card-bg: white;
+  --login-text: #333;
+  --login-input-bg: #f9f9f9;
+  --login-input-border: #ddd;
+  --login-btn-bg: #dc2626;
+  --login-btn-text: white;
+}
+
+body.dark-mode,
+html.dark-mode body {
+  --login-bg: #121212;
+  --login-left-bg: linear-gradient(135deg, #1e3a5f, #0f1419);
+  --login-right-bg: linear-gradient(135deg, #7f1d1d, #4c1d1d);
+  --login-card-bg: #1e1e1e;
+  --login-text: #e0e0e0;
+  --login-input-bg: #2a2a2a;
+  --login-input-border: #555;
+  --login-btn-bg: #dc2626;
+  --login-btn-text: white;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,8 +36,10 @@
 /* Body & Page Setup */
 .login-page {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: #f5f5f5;
+  background: var(--login-bg);
+  color: var(--login-text);
   overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
 }
 
 /* Main Wrapper - Flexbox for Two Columns */
@@ -28,7 +55,7 @@
 
 .login-left {
   flex: 1;
- background: linear-gradient(135deg, #2563eb);
+  background: var(--login-left-bg);
   color: white;
   display: flex;
   flex-direction: column;
@@ -36,6 +63,7 @@
   align-items: center;
   padding: 40px 30px;
   min-height: 100vh;
+  transition: background 0.3s;
 }
 
 .left-content {
@@ -52,22 +80,40 @@
   align-items: center;
 }
 
-.logo-placeholder {
-  width: 100px;
-  height: 100px;
-  background: rgba(255, 255, 255, 0.1);
+.logo-container {
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  box-shadow: 0 4px 15px #2563eb;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+  padding: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logo-placeholder svg {
-  width: 70px;
-  height: 70px;
-  color: white;
+.logo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+}
+
+.university-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+body.dark-mode .logo-container {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 20px rgba(30, 58, 95, 0.6);
+}
+
+body.dark-mode .logo-container:hover {
+  box-shadow: 0 8px 25px rgba(30, 58, 95, 0.7);
 }
 
 .university-name {
@@ -93,13 +139,19 @@
 
 /* Notice Board Card */
 .notice-board {
-  background: white;
-  color: #333;
+  background: var(--login-card-bg);
+  color: var(--login-text);
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 8px 25px #2563eb;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
   max-height: 400px;
   overflow-y: auto;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+body.dark-mode .notice-board,
+html.dark-mode .notice-board {
+  box-shadow: 0 8px 25px rgba(30, 58, 95, 0.5);
 }
 
 .notice-title {
@@ -109,6 +161,13 @@
   color: #1e3a5f;
   border-bottom: 2px solid #e0e0e0;
   padding-bottom: 10px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+body.dark-mode .notice-title,
+html.dark-mode .notice-title {
+  color: #4dabf7;
+  border-bottom-color: #555;
 }
 
 .notice-list {
@@ -121,6 +180,12 @@
   margin-bottom: 18px;
   padding-bottom: 12px;
   border-bottom: 1px solid #f0f0f0;
+  transition: border-color 0.3s;
+}
+
+body.dark-mode .notice-list li,
+html.dark-mode .notice-list li {
+  border-bottom-color: #444;
 }
 
 .notice-list li:last-child {
@@ -136,6 +201,12 @@
   text-transform: uppercase;
   letter-spacing: 0.3px;
   margin-bottom: 5px;
+  transition: color 0.3s;
+}
+
+body.dark-mode .notice-date,
+html.dark-mode .notice-date {
+  color: #bbb;
 }
 
 .notice-text {
@@ -143,6 +214,12 @@
   color: #444;
   line-height: 1.4;
   font-weight: 500;
+  transition: color 0.3s;
+}
+
+body.dark-mode .notice-text,
+html.dark-mode .notice-text {
+  color: #ccc;
 }
 
 /* Scrollbar styling for notice board */
@@ -170,14 +247,14 @@
 
 .login-right {
   flex: 1;
-  background: #f8fafc;
-
+  background: var(--login-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 40px 30px;
   min-height: 100vh;
+  transition: background 0.3s;
 }
 
 .right-content {
@@ -187,19 +264,53 @@
 
 /* Login Card */
 .login-card {
-  background: white;
+  background: var(--login-card-bg);
   border-radius: 12px;
   padding: 40px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .login-heading {
   font-size: 24px;
   font-weight: 700;
-  color: #333;
-  margin-bottom: 30px;
+  color: var(--login-text);
+  margin: 0;
   text-align: center;
   letter-spacing: -0.5px;
+  transition: color 0.3s;
+}
+
+.dark-mode-btn {
+  background: transparent;
+  color: var(--login-text);
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.dark-mode-btn:hover {
+  background: rgba(128, 128, 128, 0.1);
+}
+
+body.dark-mode .dark-mode-btn,
+html.dark-mode .dark-mode-btn {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .dark-mode-btn:hover,
+html.dark-mode .dark-mode-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Login Form */
@@ -217,28 +328,28 @@
 .form-group label {
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: var(--login-text);
   margin-bottom: 8px;
   letter-spacing: 0.3px;
+  transition: color 0.3s;
 }
 
 /* USN Input */
 #usn {
   padding: 12px 14px;
-  border: 1.5px solid #ddd;
+  border: 1.5px solid var(--login-input-border);
   border-radius: 8px;
-  font-size: 14px;
+  background: var(--login-input-bg);
+  color: var(--login-text);
+  font-size: 16px;
   font-family: inherit;
   transition: all 0.3s ease;
-  background: #fafafa;
 }
 
 #usn:focus {
   outline: none;
   border-color: #2563eb;
-box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.1);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 #usn::placeholder {
@@ -258,12 +369,12 @@ box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 
 .dob-container select {
   padding: 12px 10px;
-  border: 1.5px solid #ddd;
+  border: 1.5px solid var(--login-input-border);
   border-radius: 8px;
   font-size: 14px;
   font-family: inherit;
-  background: #fafafa;
-  color: #333;
+  background: var(--login-input-bg);
+  color: var(--login-text);
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -271,14 +382,12 @@ box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 .dob-container select:focus {
   outline: none;
   border-color: #2563eb;
-box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.1);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .dob-container select option {
-  background: white;
-  color: #333;
+  background: var(--login-input-bg);
+  color: var(--login-text);
 }
 
 /* Forgot Password Link */
@@ -304,17 +413,16 @@ box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 /* Login Button */
 .login-btn {
   padding: 14px;
- background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  background: var(--login-btn-bg);
   box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-  color: white;
+  color: var(--login-btn-text);
   border: none;
   border-radius: 8px;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(183, 28, 28, 0.3);
+  transition: all 0.3s ease, background 0.3s, color 0.3s;
   margin-top: 10px;
 }
 
@@ -336,8 +444,8 @@ box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 
 .guest-btn {
   background: transparent;
- color: #2563eb;
-border: 1.5px solid #2563eb;
+  color: #2563eb;
+  border: 1.5px solid #2563eb;
 
   padding: 11px 20px;
   border-radius: 8px;
@@ -392,6 +500,7 @@ border: 1.5px solid #2563eb;
 
 /* Mobile (up to 768px) */
 @media (max-width: 768px) {
+
   .login-left,
   .login-right {
     padding: 40px 20px;
@@ -406,14 +515,9 @@ border: 1.5px solid #2563eb;
     padding: 30px 20px;
   }
 
-  .logo-placeholder {
-    width: 80px;
-    height: 80px;
-  }
-
-  .logo-placeholder svg {
-    width: 60px;
-    height: 60px;
+  .logo-container {
+    width: 100px;
+    height: 100px;
   }
 
   .university-name {
@@ -470,6 +574,7 @@ border: 1.5px solid #2563eb;
 
 /* Small Mobile (up to 480px) */
 @media (max-width: 480px) {
+
   .login-left,
   .login-right {
     padding: 30px 15px;
@@ -479,15 +584,10 @@ border: 1.5px solid #2563eb;
     text-align: center;
   }
 
-  .logo-placeholder {
-    width: 70px;
-    height: 70px;
+  .logo-container {
+    width: 80px;
+    height: 80px;
     margin-bottom: 15px;
-  }
-
-  .logo-placeholder svg {
-    width: 50px;
-    height: 50px;
   }
 
   .university-branding {
