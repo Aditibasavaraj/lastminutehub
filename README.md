@@ -105,11 +105,14 @@ Contributions are welcome! Here's how you can help:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 👨‍💻 Author
+## 🤝 Contributors
 
-**Aditi Basavaraj**
-- 🎓 B.Tech – Information Science Engineering
-- 💼 GitHub: [@Aditibasavaraj](https://github.com/Aditibasavaraj)
+Thanks to all contributors for their valuable contributions to Last-Minute Hub:
+
+- **Aditi Basavaraj** - [@Aditibasavaraj](https://github.com/Aditibasavaraj)
+- **Akshatha R** - [@Akshathar2606](https://github.com/Akshathar2606)
+- **Anjali TM** - [@anjalitm](https://github.com/anjalitm)
+- **Deepika** - [@Deepika-dev-doy](https://github.com/Deepika-dev-doy)
 
 ## 📄 License
 
@@ -280,15 +283,13 @@ We welcome contributions from the student community! Here's how you can help:
 - **Standards Compliance** - Modern web standards and best practices
 
 ---
-
-## 👨‍💻 **Author**
-
+##  **Team Members**
 **Aditi Basavaraj**
+**Anjali TM**
+**Akshatha R**
+**Deepika**
 - 🎓 **Course**: B.Tech – Information Science Engineering
-- 🏫 **Institution**: [Your Institution Name]
-- 📧 **Email**: [Your Email]
-- 💼 **GitHub**: [@Aditibasavaraj](https://github.com/Aditibasavaraj)
-- 🌐 **LinkedIn**: [Your LinkedIn Profile]
+- 💼 **GitHub**: [@Aditibasavaraj](https://github.com/Aditibasavaraj),[@AntaliTM](https://github.com/anjalitm),[@AkshthaR](https://github.com/Akshathar2606),[@Deepika](https://github.com/Deepika-dev-doy)
 
 ### **Project Motivation**
 > "As an engineering student, I experienced firsthand the challenges of last-minute exam preparation and career skill development. Last-Minute Hub was born from the need to create a comprehensive, student-friendly platform that addresses these real-world academic challenges while promoting continuous learning and growth."
